@@ -18,6 +18,16 @@ Note: docker registry must be [v2](https://docs.docker.com/registry/spec/api/).
 
 * `password`: *Optional.* The password to use when authenticating.
 
+* `login`: *Optional.* An array of additional username, password and registry
+  to log in, following this format:
+
+  ```yaml
+  login:
+  - username: USERNAME
+    password: PASSWORD
+    registry: REGISTRY # (optional)
+  ```
+
 * `aws_access_key_id`: *Optional.* AWS access key to use for acquiring ECR
   credentials.
 
@@ -238,6 +248,22 @@ version is the image's digest.
 * `tag_prefix`: *Optional.* If specified, the tag read from the file will be
   prepended with this string. This is useful for adding `v` in front of version
   numbers.
+
+* `build_args`: *Optional.*  A map of Docker build arguments.
+
+  Example:
+
+  ```yaml
+  build_args:
+    do_thing: true
+    how_many_things: 2
+    email: me@yopmail.com
+  ```
+
+* `build_args_file`: *Optional.* Path to a JSON file containing Docker build
+  arguments.
+
+  Example file contents:
 
 * `target_name`: *Optional.*  Specify the name of the target build stage. 
   Only supported for multi-stage Docker builds
